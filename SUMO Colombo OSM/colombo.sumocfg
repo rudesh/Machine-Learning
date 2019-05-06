@@ -1,0 +1,13 @@
+<configuration>
+
+    <input>
+        <net-file value="colombo.net.xml"/>
+        <route-files value="colombo.rou.xml"/>
+    </input>
+
+    <time>
+        <begin value="0"/>
+        <end value="2000"/>
+    </time>
+
+</configuration>
