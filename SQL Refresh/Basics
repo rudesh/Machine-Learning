@@ -1,0 +1,68 @@
+CREATE DATABASE IF NOT EXISTS Sales;
+
+USE Sales;
+
+CREATE TABLE sales
+(
+	purchase_number INT NOT NULL AUTO_INCREMENT,
+    date_of_purchase DATE NOT NULL,
+    customer_id INT,
+    item_code VARCHAR(10) NOT NULL,
+PRIMARY KEY (purchase_number)
+);
+
+ALTER TABLE sales
+ADD FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE;
+
+ALTER TABLE sales
+DROP FOREIGN KEY sales_ibfk_1;
+
+
+CREATE TABLE customers
+(
+	customer_id INT NOT NULL PRIMARY KEY,
+	first_name VARCHAR(255),
+	last_name VARCHAR(255),
+	email_address VARCHAR(255),
+	number_of_complaints INT
+);
+
+ALTER TABLE customers
+ADD UNIQUE KEY (email_address);
+
+ALTER TABLE customers
+DROP INDEX email_address;
+
+ALTER TABLE customers
+CHANGE COLUMN number_of_complaints number_of_complaints INT DEFAULT 0;
+
+ALTER TABLE customers
+ALTER COLUMN number_of_complaints DROP DEFAULT;
+
+INSERT INTO customers (customer_id, first_name, last_name)
+VALUES (10, 'Rudesh', 'Sekaran');
+
+SELECT * FROM customers;
+
+CREATE TABLE items
+(
+item_id VARCHAR(255) PRIMARY KEY,
+item VARCHAR(255),
+unit_price NUMERIC(10,2),
+company_id VARCHAR(255)
+);
+
+CREATE TABLE companies
+(
+company_id INT AUTO_INCREMENT PRIMARY KEY,
+company_name VARCHAR(255) NOT NULL,
+head_phone_number INT(12)
+);
+
+ALTER TABLE companies
+MODIFY company_name VARCHAR(255) NULL;
+
+DROP TABLE sales;
+DROP TABLE customers;
+DROP TABLE items;
+DROP TABLE companies;
