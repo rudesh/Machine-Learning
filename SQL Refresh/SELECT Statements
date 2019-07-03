@@ -1,0 +1,95 @@
+SELECT 
+    first_name, last_name
+FROM
+    employees;
+    
+SELECT * FROM employees;
+    
+select * from employees where first_name = 'Denis';
+
+SELECT 
+    *
+FROM
+    employees
+WHERE
+    first_name = 'Denis' AND gender = 'M';
+    
+SELECT 
+    *
+FROM
+    employees
+WHERE
+    first_name = 'Denis'
+        OR first_name = 'Elvis';
+        
+SELECT 
+    *
+FROM
+    employees
+WHERE
+    last_name = 'Denis' AND (gender = 'M' OR gender = 'F');
+    
+SELECT 
+    *
+FROM
+    employees
+WHERE
+    first_name = 'Cathie' OR first_name = 'Mark' OR first_name = 'Nathan';
+    
+SELECT 
+    *
+FROM
+    employees
+WHERE
+    first_name IN ('Cathie' , 'Mark', 'Nathan');
+    
+SELECT 
+    *
+FROM
+    employees
+WHERE
+    first_name LIKE ('Mar%');
+    
+SELECT 
+    *
+FROM
+    employees
+WHERE
+    first_name LIKE ('Mar_');
+    
+SELECT 
+    *
+FROM
+    employees
+WHERE
+    hire_date BETWEEN '1990-01-01' AND '2000-01-01';
+   
+   
+SELECT 
+    *
+FROM
+    employees
+WHERE
+    first_name IS NOT NULL;
+
+
+SELECT 
+    *
+FROM
+    employees
+WHERE
+    first_name != 'Mark';
+
+
+SELECT 
+    *
+FROM
+    employees
+WHERE
+    hire_date > '2000-01-01';
+
+
+SELECT DISTINCT
+    gender
+FROM
+    employees;
