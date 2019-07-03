@@ -1,0 +1,103 @@
+#how many employees are there
+SELECT 
+    COUNT(emp_no)
+FROM
+    employees;
+    
+
+#how many unique first names    
+SELECT 
+    COUNT(DISTINCT first_name)
+FROM
+    employees;
+    
+#eldest person in the database
+SELECT 
+    MIN(birth_date)
+FROM
+    employees;
+    
+    
+#youngest person
+SELECT 
+    MAX(birth_date)
+FROM
+    employees;
+    
+
+#order by alphabetical order of employee name
+SELECT 
+    *
+FROM
+    employees
+ORDER BY first_name;
+
+
+SELECT 
+    *
+FROM
+    employees
+ORDER BY emp_no DESC;
+
+
+SELECT 
+    *
+FROM
+    employees
+ORDER BY first_name, last_name;
+
+
+#unique first names and its count
+SELECT 
+    first_name, COUNT(first_name)
+FROM
+    employees
+GROUP BY first_name
+ORDER BY first_name;
+
+
+SELECT 
+    gender, COUNT(gender)
+FROM
+    employees
+GROUP BY gender;
+
+
+#alias a result
+SELECT 
+    first_name, COUNT(first_name) AS names_count
+FROM
+    employees
+GROUP BY first_name
+ORDER BY first_name;
+
+
+#having
+SELECT 
+    first_name, COUNT(first_name) AS names_count
+FROM
+    employees
+GROUP BY first_name
+HAVING COUNT(first_name) > 250
+ORDER BY first_name;
+
+
+#where & having both
+SELECT 
+    first_name, COUNT(first_name) AS names_count
+FROM
+    employees
+WHERE
+    hire_date > '1999-01-01'
+GROUP BY first_name
+HAVING COUNT(first_name) < 200
+ORDER BY first_name DESC;
+
+
+#10 highest salaries
+SELECT 
+    *
+FROM
+    salaries
+ORDER BY salary DESC
+LIMIT 10;
