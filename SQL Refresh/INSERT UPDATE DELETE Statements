@@ -1,0 +1,106 @@
+USE employees;
+
+#inserting data
+INSERT INTO employees (
+emp_no,
+birth_date,
+first_name,
+last_name,
+gender,
+hire_date
+)
+VALUES (
+999901,
+'1988-04-04',
+'Rudesh',
+'Sekaran',
+'M',
+'2019-07-04'
+);
+
+INSERT INTO employees
+VALUES(
+999902,
+'1999-01-01',
+'Captain',
+'America',
+'M',
+'2019-01-01'
+);
+
+
+SELECT 
+    *
+FROM
+    employees
+ORDER BY emp_no DESC
+LIMIT 10;
+
+
+SELECT 
+    *
+FROM
+    departments
+LIMIT 10;
+
+
+#create a duplicate of departments table
+CREATE TABLE departments_dup (
+    dep_no CHAR(4) NOT NULL,
+    department_name VARCHAR(40) NOT NULL
+);
+
+
+#inserting values from another table
+INSERT INTO departments_dup
+(
+dep_no,
+department_name
+)
+SELECT * FROM departments;
+
+
+SELECT 
+    *
+FROM
+    departments_dup
+LIMIT 10;
+
+
+
+#updating existing values
+UPDATE employees 
+SET 
+    first_name = 'Iron',
+    last_name = 'Man',
+    birth_date = '2008-01-01',
+    gender = 'M'
+WHERE
+    emp_no = 999901;
+
+
+SELECT 
+    *
+FROM
+    employees
+WHERE
+    emp_no = 999901;
+    
+
+#commit and rollback
+COMMIT;
+
+UPDATE departments_dup
+SET
+dep_no = 'hello',
+department_name = 'test';
+
+ROLLBACK;
+
+COMMIT;
+
+
+#deleting records
+DELETE FROM employees 
+WHERE
+    emp_no = 999902;
