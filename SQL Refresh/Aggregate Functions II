@@ -1,0 +1,50 @@
+USE employees;
+
+#total cost of salaries
+SELECT 
+    SUM(salary)
+FROM
+    salaries;
+    
+#highest salary offer
+SELECT 
+    MAX(salary)
+FROM
+    salaries;
+    
+#minimest salary offer
+SELECT 
+    MIN(salary)
+FROM
+    salaries;
+    
+#average salary of all employees
+SELECT 
+    AVG(salary)
+FROM
+    salaries;
+    
+#round to integers
+SELECT 
+    ROUND(AVG(salary))
+FROM
+    salaries;
+    
+#round to 2 floating digits
+SELECT 
+    ROUND(AVG(salary), 2)
+FROM
+    salaries;
+    
+#if null
+SELECT 
+    dep_no, IFNULL(department_name, 'not provided') AS dep_name
+FROM
+    departments_dup;
+    
+#coalesce
+SELECT 
+    dep_no,
+    COALESCE(department_name, 'not provided') AS dep_name
+FROM
+    departments_dup;
